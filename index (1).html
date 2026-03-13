@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MADHU — Nature's Pure Gold</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@100;300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     INTRO OVERLAY — Bee Swarm → Jar → Buffalo
+═══════════════════════════════════════════ -->
+<div id="intro">
+  <canvas id="beeCanvas"></canvas>
+
+  <div id="introStage">
+
+    <!-- Buffalo (hidden initially) -->
+    <div id="buffaloWrap">
+      <svg id="buffaloSVG" viewBox="0 0 760 480" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="bAura" cx="50%" cy="80%" r="55%">
+            <stop offset="0%" stop-color="#f4b400" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="transparent"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="380" cy="462" rx="290" ry="18" fill="rgba(0,0,0,0.4)"/>
+        <ellipse cx="380" cy="440" rx="310" ry="55" fill="url(#bAura)"/>
+        <ellipse cx="400" cy="272" rx="175" ry="118" fill="#100503"/>
+        <ellipse cx="295" cy="190" rx="100" ry="86" fill="#100503"/>
+        <path d="M230 225 Q248 178 295 172 Q342 170 362 204 Q378 232 370 252" fill="#100503"/>
+        <path d="M212 248 Q188 220 183 200 Q178 182 194 170 L232 182 Q248 208 256 234 Z" fill="#100503"/>
+        <ellipse cx="178" cy="262" rx="78" ry="64" fill="#100503"/>
+        <ellipse cx="115" cy="282" rx="46" ry="35" fill="#180806"/>
+        <ellipse cx="102" cy="290" rx="11" ry="9" fill="#060200"/>
+        <ellipse cx="126" cy="290" rx="11" ry="9" fill="#060200"/>
+        <circle cx="154" cy="244" r="12" fill="#060200"/>
+        <circle cx="159" cy="240" r="5" fill="#f4a000" opacity="0.9"/>
+        <circle cx="161" cy="238" r="2" fill="#fffde7" opacity="0.9"/>
+        <ellipse cx="198" cy="208" rx="21" ry="35" fill="#100503" transform="rotate(-24,198,208)"/>
+        <ellipse cx="198" cy="208" rx="13" ry="22" fill="#1e0a05" transform="rotate(-24,198,208)"/>
+        <path d="M152 204 C122 168 88 150 58 146 C34 143 18 151 20 166 C22 180 42 184 64 182 C88 179 114 190 134 210" stroke="#2e1508" stroke-width="17" fill="none" stroke-linecap="round"/>
+        <path d="M200 196 C228 160 266 142 298 137 C322 133 342 141 342 155 C342 169 320 173 296 171 C270 169 244 180 228 200" stroke="#2e1508" stroke-width="17" fill="none" stroke-linecap="round"/>
+        <circle cx="20" cy="166" r="8" fill="#220d04"/>
+        <circle cx="342" cy="155" r="8" fill="#220d04"/>
+        <rect x="222" y="360" width="44" height="112" rx="13" fill="#100503"/>
+        <rect x="222" y="438" width="44" height="32" rx="7" fill="#060200"/>
+        <rect x="286" y="352" width="44" height="118" rx="13" fill="#100503"/>
+        <rect x="286" y="432" width="44" height="36" rx="7" fill="#060200"/>
+        <rect x="368" y="356" width="44" height="114" rx="13" fill="#0d0402"/>
+        <rect x="368" y="432" width="44" height="36" rx="7" fill="#060200"/>
+        <rect x="432" y="352" width="44" height="118" rx="13" fill="#0d0402"/>
+        <rect x="432" y="432" width="44" height="36" rx="7" fill="#060200"/>
+        <path d="M555 270 Q592 242 600 274 Q604 306 585 320 Q574 332 570 348" stroke="#100503" stroke-width="17" fill="none" stroke-linecap="round"/>
+        <path d="M570 348 Q563 370 556 382 Q548 390 542 386" stroke="#100503" stroke-width="13" fill="none" stroke-linecap="round"/>
+        <ellipse cx="542" cy="388" rx="11" ry="16" fill="#100503" transform="rotate(14,542,388)"/>
+      </svg>
+    </div>
+
+    <!-- Glass Honey Jar -->
+    <div id="jarWrap">
+      <svg id="honeyJar" viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="hFill" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#ffd740"/>
+            <stop offset="100%" stop-color="#c77800"/>
+          </linearGradient>
+          <radialGradient id="jarGlow" cx="50%" cy="55%" r="58%">
+            <stop offset="0%" stop-color="#f4b400" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#f4b400" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="jShadow">
+            <feDropShadow dx="0" dy="20" stdDeviation="22" flood-color="#f4b400" flood-opacity="0.35"/>
+          </filter>
+        </defs>
+        <ellipse cx="120" cy="175" rx="140" ry="140" fill="url(#jarGlow)"/>
+        <rect x="60" y="20" width="120" height="26" rx="7" fill="#7b5c42"/>
+        <rect x="55" y="42" width="130" height="16" rx="6" fill="#6b4c32"/>
+        <rect x="70" y="44" width="100" height="5" rx="2" fill="#a07850"/>
+        <path d="M 68 58 Q 48 70 42 100 L 34 222 Q 34 262 120 266 Q 206 262 206 222 L 198 100 Q 192 70 172 58 Z"
+              fill="rgba(255,253,230,0.12)" stroke="rgba(255,255,255,0.48)" stroke-width="2.5" filter="url(#jShadow)"/>
+        <path d="M 44 122 Q 45 110 56 106 L 184 106 Q 195 110 196 122 L 196 222 Q 196 256 120 259 Q 44 256 44 222 Z"
+              fill="url(#hFill)" opacity="0.94"/>
+        <ellipse cx="120" cy="106" rx="70" ry="12" fill="#f4b400"/>
+        <ellipse cx="98" cy="103" rx="40" ry="6" fill="#ffd740" opacity="0.6"/>
+        <path d="M 76 82 Q 70 148 73 205" stroke="rgba(255,255,255,0.65)" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <path d="M 168 86 Q 163 128 164 170" stroke="rgba(255,255,255,0.22)" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <rect x="60" y="140" width="120" height="98" rx="8" fill="#fff8e1" opacity="0.97"/>
+        <rect x="63" y="143" width="114" height="92" rx="6" fill="none" stroke="#f4b400" stroke-width="2"/>
+        <text x="120" y="172" text-anchor="middle" font-family="Playfair Display,serif" font-size="18" fill="#3e2723" font-weight="900" letter-spacing="4">MADHU</text>
+        <text x="120" y="186" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="9.5" fill="#7b5c42" letter-spacing="2.5">P U R E · H O N E Y</text>
+        <line x1="74" y1="191" x2="166" y2="191" stroke="#f4b400" stroke-width="1.2"/>
+        <text x="120" y="206" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="9" fill="#a07850">100% Natural · Chemical Free</text>
+        <text x="120" y="220" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="9" fill="#a07850">Glass Jar · Farm Sourced</text>
+        <ellipse cx="120" cy="258" rx="76" ry="11" fill="#c77800" opacity="0.5"/>
+        <path d="M 112 58 Q 110 74 112 88 Q 114 99 111 109" stroke="#e09000" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <ellipse cx="111" cy="112" rx="6" ry="4.5" fill="#f4b400"/>
+      </svg>
+    </div>
+
+  </div><!-- /introStage -->
+
+  <!-- Text overlay after animation -->
+  <div id="introText">
+    <div class="i-orn">✦ &nbsp; ✦ &nbsp; ✦</div>
+    <h1 class="i-brand">MADHU</h1>
+    <div class="i-rule"></div>
+    <p class="i-tagline">Nature's Pure Gold</p>
+    <p class="i-sub">Authentic Honey &nbsp;·&nbsp; Pure Desi Ghee &nbsp;·&nbsp; Farm Sourced</p>
+    <button id="enterBtn">Enter the World of MADHU <i class="fas fa-long-arrow-alt-right"></i></button>
+  </div>
+
+  <button id="skipBtn">Skip Intro ›</button>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     MAIN WEBSITE
+═══════════════════════════════════════════ -->
+<div id="site">
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-hex">⬡</span>
+        <span class="logo-name">MADHU</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero"     class="nl">Home</a></li>
+        <li><a href="#products" class="nl">Our Honey</a></li>
+        <li><a href="#products" class="nl">Desi Ghee</a></li>
+        <li><a href="#story"    class="nl">About Us</a></li>
+        <li><a href="#quality"  class="nl">Quality</a></li>
+        <li><a href="#contact"  class="nl">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="cart-btn" id="cartBtn">
+          <i class="fas fa-shopping-bag"></i>
+          <span id="cartCount" class="cart-count">0</span>
+        </div>
+        <div class="burger" id="burger"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+  <section id="hero">
+    <!-- Honey drips top bar -->
+    <div class="drip-bar">
+      <div class="drip" style="left:4%;  animation-delay:0s"></div>
+      <div class="drip" style="left:13%; animation-delay:1.6s"></div>
+      <div class="drip" style="left:25%; animation-delay:0.6s"></div>
+      <div class="drip" style="left:39%; animation-delay:2.4s"></div>
+      <div class="drip" style="left:52%; animation-delay:1.0s"></div>
+      <div class="drip" style="left:65%; animation-delay:1.9s"></div>
+      <div class="drip" style="left:77%; animation-delay:0.3s"></div>
+      <div class="drip" style="left:88%; animation-delay:2.8s"></div>
+      <div class="drip" style="left:96%; animation-delay:1.3s"></div>
+    </div>
+
+    <div class="hero-content">
+      <span class="hero-eye">Farm to Glass · Chemical Free · Pure Tradition</span>
+      <h1 class="hero-h1">
+        <span class="hl">M</span><span class="hl">A</span><span class="hl">D</span><span class="hl">H</span><span class="hl">U</span>
+      </h1>
+      <div class="hero-div">
+        <span class="hd-line"></span>
+        <span class="hd-hex">⬡</span>
+        <span class="hd-line"></span>
+      </div>
+      <p class="hero-tagline">Nature's Pure Gold</p>
+      <p class="hero-desc">Handcrafted from the pristine forests and farms of India —<br>carrying the soul of tradition in every golden drop.</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-gold">Shop Collection <i class="fas fa-arrow-right"></i></a>
+        <a href="#story"    class="btn-ghost">Our Heritage</a>
+      </div>
+      <div class="hero-trust">
+        <span><i class="fas fa-seedling"></i> 100% Organic</span>
+        <span><i class="fas fa-leaf"></i> Chemical Free</span>
+        <span><i class="fas fa-award"></i> Lab Tested</span>
+      </div>
+    </div>
+
+    <!-- Floating jar right side -->
+    <div class="hero-jar">
+      <div class="jar-ring"></div>
+      <svg viewBox="0 0 260 360" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="hjf" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#ffd740"/>
+            <stop offset="100%" stop-color="#c77800"/>
+          </linearGradient>
+          <filter id="hjS"><feDropShadow dx="0" dy="30" stdDeviation="24" flood-color="#f4b400" flood-opacity="0.3"/></filter>
+        </defs>
+        <ellipse cx="130" cy="190" rx="145" ry="145" fill="#f4b400" opacity="0.08"/>
+        <rect x="65" y="20" width="130" height="28" rx="8" fill="#8d6543"/>
+        <rect x="60" y="44" width="140" height="17" rx="7" fill="#7a5535"/>
+        <rect x="76" y="46" width="108" height="6" rx="3" fill="#b08060"/>
+        <path d="M 74 61 Q 52 74 46 106 L 38 234 Q 38 276 130 280 Q 222 276 222 234 L 214 106 Q 208 74 186 61 Z"
+              fill="rgba(255,252,230,0.12)" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" filter="url(#hjS)"/>
+        <path d="M 50 128 Q 51 114 63 110 L 197 110 Q 209 114 210 128 L 210 234 Q 210 270 130 273 Q 50 270 50 234 Z"
+              fill="url(#hjf)" opacity="0.95"/>
+        <ellipse cx="130" cy="110" rx="75" ry="13" fill="#f4b400"/>
+        <ellipse cx="108" cy="107" rx="44" ry="7" fill="#ffd740" opacity="0.6"/>
+        <path d="M 82 86 Q 75 154 78 214" stroke="rgba(255,255,255,0.65)" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M 182 90 Q 176 134 178 178" stroke="rgba(255,255,255,0.22)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <rect x="66" y="148" width="128" height="100" rx="9" fill="#fff8e1" opacity="0.97"/>
+        <rect x="69" y="151" width="122" height="94" rx="7" fill="none" stroke="#f4b400" stroke-width="2"/>
+        <text x="130" y="178" text-anchor="middle" font-family="Playfair Display,serif" font-size="20" fill="#3e2723" font-weight="900" letter-spacing="4.5">MADHU</text>
+        <text x="130" y="194" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="10" fill="#7b5c42" letter-spacing="2.5">PURE · HONEY</text>
+        <line x1="80" y1="199" x2="180" y2="199" stroke="#f4b400" stroke-width="1.5"/>
+        <text x="130" y="214" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="9.5" fill="#a07850">100% Natural</text>
+        <text x="130" y="229" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="9" fill="#a07850">Chemical Free · Glass Jar</text>
+        <ellipse cx="130" cy="272" rx="80" ry="12" fill="#c77800" opacity="0.45"/>
+        <path d="M 122 61 Q 120 78 122 94 Q 124 106 120 116" stroke="#d08000" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <ellipse cx="120" cy="119" rx="7" ry="5" fill="#f4b400"/>
+      </svg>
+      <div class="spark s1">✦</div>
+      <div class="spark s2">✦</div>
+      <div class="spark s3">⬡</div>
+      <div class="spark s4">✦</div>
+    </div>
+
+    <div class="scroll-cue">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+
+  <!-- MARQUEE STRIP -->
+  <div class="marquee-bar">
+    <div class="marquee-track">
+      <span>⬡ RAW HONEY</span><span>⬡ DESI GHEE</span><span>⬡ FARM FRESH</span>
+      <span>⬡ GLASS JARS</span><span>⬡ CHEMICAL FREE</span><span>⬡ BILONA CHURNED</span>
+      <span>⬡ A2 MILK</span><span>⬡ TRADITIONAL METHODS</span>
+      <span>⬡ RAW HONEY</span><span>⬡ DESI GHEE</span><span>⬡ FARM FRESH</span>
+      <span>⬡ GLASS JARS</span><span>⬡ CHEMICAL FREE</span><span>⬡ BILONA CHURNED</span>
+      <span>⬡ A2 MILK</span><span>⬡ TRADITIONAL METHODS</span>
+    </div>
+  </div>
+
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="sec-head">
+      <span class="eyebrow reveal">Our Collection</span>
+      <h2 class="sec-title reveal">Nature's Finest Gifts</h2>
+      <p class="sec-desc reveal">Each jar holds a promise of purity — sourced from the heart of nature, sealed with centuries of tradition.</p>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- Honey -->
+      <div class="pcard reveal">
+        <div class="pcard-badge honey-bdg">✦ Bestseller</div>
+        <div class="pcard-vis">
+          <div class="paura haura"></div>
+          <svg class="pjsvg" viewBox="0 0 210 300" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="p1g" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#ffd740"/>
+                <stop offset="100%" stop-color="#c77800"/>
+              </linearGradient>
+            </defs>
+            <rect x="56" y="20" width="98" height="22" rx="6" fill="#8d6543"/>
+            <rect x="52" y="38" width="106" height="14" rx="5" fill="#7a5535"/>
+            <path d="M 62 52 Q 44 63 38 90 L 31 208 Q 31 244 105 248 Q 179 244 179 208 L 172 90 Q 166 63 148 52 Z" fill="rgba(255,252,230,0.1)" stroke="rgba(255,255,255,0.45)" stroke-width="2"/>
+            <path d="M 41 112 Q 42 102 51 98 L 159 98 Q 168 102 169 112 L 169 208 Q 169 238 105 241 Q 41 238 41 208 Z" fill="url(#p1g)" opacity="0.94"/>
+            <ellipse cx="105" cy="98" rx="60" ry="10" fill="#f4b400"/>
+            <ellipse cx="88" cy="95" rx="33" ry="5.5" fill="#ffd740" opacity="0.6"/>
+            <path d="M 68 75 Q 62 130 64 180" stroke="rgba(255,255,255,0.6)" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <rect x="55" y="124" width="100" height="88" rx="7" fill="#fff8e1" opacity="0.97"/>
+            <rect x="58" y="127" width="94" height="82" rx="5" fill="none" stroke="#f4b400" stroke-width="1.6"/>
+            <text x="105" y="152" text-anchor="middle" font-family="Playfair Display,serif" font-size="15.5" fill="#3e2723" font-weight="900" letter-spacing="3.5">MADHU</text>
+            <text x="105" y="166" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="9" fill="#7b5c42" letter-spacing="2">PURE · HONEY</text>
+            <line x1="67" y1="171" x2="143" y2="171" stroke="#f4b400" stroke-width="1.2"/>
+            <text x="105" y="186" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8.5" fill="#a07850">Raw · Unprocessed</text>
+            <text x="105" y="199" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8.5" fill="#a07850">500g Glass Jar</text>
+            <ellipse cx="105" cy="241" rx="67" ry="9" fill="#c77800" opacity="0.45"/>
+            <path d="M 100 38 Q 98 52 100 63" stroke="#d08000" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <ellipse cx="100" cy="65" rx="5" ry="3.5" fill="#f4b400"/>
+          </svg>
+          <div class="card-drip"></div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-tag htag">Raw · Unfiltered · Pure</div>
+          <h3>Authentic Raw Honey</h3>
+          <p>Straight from the hive — every enzyme, pollen grain, and antioxidant preserved. Unheated, unfiltered, untouched.</p>
+          <div class="psizes">
+            <button class="sz active">250g</button>
+            <button class="sz">500g</button>
+            <button class="sz">1 kg</button>
+          </div>
+          <div class="pbuy">
+            <div class="pprice">
+              <span class="pnow">₹449</span>
+              <span class="pwas">₹599</span>
+              <span class="psave">25% off</span>
+            </div>
+            <button class="btn-cart hbtn" onclick="addToCart('Authentic Raw Honey',449)">
+              <i class="fas fa-shopping-bag"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ghee -->
+      <div class="pcard reveal">
+        <div class="pcard-badge ghee-bdg">✦ Premium</div>
+        <div class="pcard-vis gvis">
+          <div class="paura gaura"></div>
+          <svg class="pjsvg" viewBox="0 0 210 300" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="p2g" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#fff9c4"/>
+                <stop offset="100%" stop-color="#f9a825"/>
+              </linearGradient>
+            </defs>
+            <rect x="48" y="20" width="114" height="24" rx="7" fill="#4a7c3f"/>
+            <rect x="44" y="40" width="122" height="14" rx="6" fill="#3a6430"/>
+            <rect x="58" y="42" width="94" height="5" rx="2" fill="#6aac5e"/>
+            <path d="M 55 54 Q 38 66 33 93 L 26 208 Q 26 245 105 249 Q 184 245 184 208 L 177 93 Q 172 66 155 54 Z" fill="rgba(255,252,230,0.11)" stroke="rgba(255,255,255,0.45)" stroke-width="2"/>
+            <path d="M 35 112 Q 36 102 47 98 L 163 98 Q 174 102 175 112 L 175 208 Q 175 242 105 245 Q 35 242 35 208 Z" fill="url(#p2g)" opacity="0.95"/>
+            <ellipse cx="105" cy="98" rx="66" ry="10.5" fill="#ffe57f"/>
+            <ellipse cx="86" cy="95" rx="36" ry="5.5" fill="#fff" opacity="0.5"/>
+            <path d="M 62 76 Q 56 132 58 183" stroke="rgba(255,255,255,0.6)" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <rect x="52" y="122" width="106" height="90" rx="7" fill="#f1f8e9" opacity="0.97"/>
+            <rect x="55" y="125" width="100" height="84" rx="5" fill="none" stroke="#2e7d32" stroke-width="1.7"/>
+            <text x="105" y="152" text-anchor="middle" font-family="Playfair Display,serif" font-size="15.5" fill="#1b5e20" font-weight="900" letter-spacing="3.5">MADHU</text>
+            <text x="105" y="166" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="9" fill="#3a6430" letter-spacing="2">DESI · GHEE</text>
+            <line x1="64" y1="171" x2="146" y2="171" stroke="#2e7d32" stroke-width="1.2"/>
+            <text x="105" y="186" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8.5" fill="#4a7c3f">Bilona · A2 Milk</text>
+            <text x="105" y="199" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8.5" fill="#4a7c3f">500ml Glass Jar</text>
+            <ellipse cx="105" cy="244" rx="72" ry="9" fill="#c6a000" opacity="0.38"/>
+          </svg>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-tag gtag">Bilona Method · A2 Milk</div>
+          <h3>Pure Desi Ghee</h3>
+          <p>Made using the ancient Bilona churning method from pure A2 desi cow milk. Golden, aromatic, and nutrient-dense.</p>
+          <div class="psizes">
+            <button class="sz gsz active">250 ml</button>
+            <button class="sz gsz">500 ml</button>
+            <button class="sz gsz">1 L</button>
+          </div>
+          <div class="pbuy">
+            <div class="pprice">
+              <span class="pnow gprice">₹899</span>
+              <span class="pwas">₹1199</span>
+              <span class="psave gsave">25% off</span>
+            </div>
+            <button class="btn-cart gbtn" onclick="addToCart('Pure Desi Ghee',899)">
+              <i class="fas fa-shopping-bag"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- STORY -->
+  <section id="story">
+    <div class="story-wrap">
+
+      <div class="story-art reveal-left">
+        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="sSky" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#fff8e1"/>
+              <stop offset="100%" stop-color="#ffecb3"/>
+            </linearGradient>
+            <linearGradient id="sGrass" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#43a047"/>
+              <stop offset="100%" stop-color="#1b5e20"/>
+            </linearGradient>
+          </defs>
+          <rect width="500" height="500" fill="url(#sSky)"/>
+          <ellipse cx="250" cy="460" rx="290" ry="100" fill="url(#sGrass)"/>
+          <circle cx="420" cy="82" r="55" fill="#f4b400" opacity="0.2"/>
+          <circle cx="420" cy="82" r="36" fill="#f4b400" opacity="0.32"/>
+          <circle cx="420" cy="82" r="22" fill="#f4b400" opacity="0.55"/>
+          <polygon points="0,195 88,108 178,195" fill="#a5d6a7" opacity="0.65"/>
+          <polygon points="62,195 158,92 254,195" fill="#81c784" opacity="0.5"/>
+          <polygon points="298,195 390,105 480,195" fill="#c8e6c9" opacity="0.65"/>
+          <rect x="50" y="270" width="18" height="125" rx="4" fill="#5d4037"/>
+          <ellipse cx="59" cy="248" rx="48" ry="58" fill="#2e7d32"/>
+          <ellipse cx="59" cy="226" rx="34" ry="40" fill="#388e3c"/>
+          <rect x="418" y="280" width="15" height="108" rx="4" fill="#5d4037"/>
+          <ellipse cx="425" cy="260" rx="40" ry="50" fill="#1b5e20"/>
+          <ellipse cx="425" cy="240" rx="28" ry="35" fill="#2e7d32"/>
+          <rect x="158" y="342" width="80" height="70" rx="5" fill="#f4b400"/>
+          <rect x="163" y="348" width="70" height="12" rx="2" fill="#d08000"/>
+          <rect x="163" y="362" width="70" height="12" rx="2" fill="#ffc107"/>
+          <rect x="163" y="376" width="70" height="12" rx="2" fill="#d08000"/>
+          <rect x="163" y="390" width="70" height="11" rx="2" fill="#ffc107"/>
+          <rect x="184" y="406" width="32" height="8" rx="3" fill="#5d4037"/>
+          <rect x="266" y="355" width="74" height="62" rx="5" fill="#ffa000"/>
+          <rect x="271" y="361" width="64" height="11" rx="2" fill="#d08000"/>
+          <rect x="271" y="374" width="64" height="11" rx="2" fill="#ffc107"/>
+          <rect x="271" y="387" width="64" height="10" rx="2" fill="#d08000"/>
+          <rect x="271" y="399" width="64" height="10" rx="2" fill="#ffc107"/>
+          <rect x="289" y="412" width="28" height="7" rx="3" fill="#5d4037"/>
+          <ellipse cx="375" cy="418" rx="56" ry="32" fill="#1a0a05" opacity="0.75"/>
+          <ellipse cx="328" cy="408" rx="30" ry="24" fill="#1a0a05" opacity="0.75"/>
+          <circle cx="310" cy="404" r="9" fill="#1a0a05" opacity="0.75"/>
+          <ellipse cx="173" cy="316" rx="9" ry="5.5" fill="#f4b400"/>
+          <ellipse cx="214" cy="298" rx="9" ry="5.5" fill="#f4b400"/>
+          <ellipse cx="252" cy="318" rx="9" ry="5.5" fill="#f4b400"/>
+          <ellipse cx="298" cy="305" rx="9" ry="5.5" fill="#f4b400"/>
+          <ellipse cx="340" cy="316" rx="9" ry="5.5" fill="#f4b400"/>
+          <g transform="translate(118,436)">
+            <circle cx="0"   cy="0"   r="9" fill="#fff9c4"/>
+            <circle cx="-10" cy="0"   r="7" fill="#fff9c4"/>
+            <circle cx="10"  cy="0"   r="7" fill="#fff9c4"/>
+            <circle cx="0"   cy="-10" r="7" fill="#fff9c4"/>
+            <circle cx="0"   cy="10"  r="7" fill="#fff9c4"/>
+            <circle cx="0"   cy="0"   r="5" fill="#f4b400"/>
+          </g>
+          <g transform="translate(366,444)">
+            <circle cx="0"  cy="0"  r="8" fill="#fff9c4"/>
+            <circle cx="-9" cy="0"  r="6" fill="#fff9c4"/>
+            <circle cx="9"  cy="0"  r="6" fill="#fff9c4"/>
+            <circle cx="0"  cy="-9" r="6" fill="#fff9c4"/>
+            <circle cx="0"  cy="9"  r="6" fill="#fff9c4"/>
+            <circle cx="0"  cy="0"  r="4.5" fill="#f4b400"/>
+          </g>
+        </svg>
+        <div class="story-frame-deco"></div>
+      </div>
+
+      <div class="story-text reveal-right">
+        <span class="eyebrow">Our Heritage</span>
+        <h2 class="story-h2">Born From<br><em>Nature's Heart</em></h2>
+        <div class="story-div">
+          <span></span><span class="sd-gem">◆</span><span></span>
+        </div>
+        <p>MADHU was born from a simple, unshakeable belief — that the finest gifts come directly from nature, unchanged and untouched by human shortcuts.</p>
+        <p>Our founders grew up watching bees dance in wildflower meadows and buffaloes graze on lush pastures in rural India. What began as a family tradition became a promise to the world: deliver nature's purest honey and most authentic ghee, exactly as it has been for generations.</p>
+        <div class="story-stats">
+          <div class="sstat">
+            <span class="ssn">15+</span>
+            <span class="ssl">Years of Tradition</span>
+          </div>
+          <div class="ssep"></div>
+          <div class="sstat">
+            <span class="ssn">500+</span>
+            <span class="ssl">Happy Families</span>
+          </div>
+          <div class="ssep"></div>
+          <div class="sstat">
+            <span class="ssn">100%</span>
+            <span class="ssl">Chemical Free</span>
+          </div>
+        </div>
+        <a href="#quality" class="btn-story">Our Quality Promise <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- QUALITY PROMISE -->
+  <section id="quality">
+    <div class="quality-bg">
+      <div class="sec-head">
+        <span class="eyebrow light reveal">Our Commitment</span>
+        <h2 class="sec-title light reveal">The MADHU Quality Promise</h2>
+        <p class="sec-desc light reveal">Every jar that leaves our hands has passed the highest standards of purity, tradition, and care.</p>
+      </div>
+      <div class="qgrid">
+
+        <div class="qcard reveal">
+          <div class="qi">
+            <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="none" stroke="#f4b400" stroke-width="2"/><path d="M 20 32 L 28 40 L 44 22" stroke="#f4b400" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>100% Pure</h3>
+          <p>No adulteration, no sugar syrup, no artificial flavors. Just nature, bottled with integrity.</p>
+        </div>
+
+        <div class="qcard reveal">
+          <div class="qi">
+            <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="none" stroke="#f4b400" stroke-width="2"/><path d="M 32 16 Q 44 22 44 32 Q 44 46 32 50 Q 20 46 20 32 Q 20 22 32 16" stroke="#f4b400" stroke-width="2" fill="none"/><path d="M 32 22 Q 39 27 39 34 Q 39 43 32 46 Q 25 43 25 34 Q 25 27 32 22" fill="#f4b400" opacity="0.35"/></svg>
+          </div>
+          <h3>Zero Chemicals</h3>
+          <p>Our bees forage in pesticide-free zones. Our cows graze exclusively on organic pastures.</p>
+        </div>
+
+        <div class="qcard reveal">
+          <div class="qi">
+            <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="none" stroke="#f4b400" stroke-width="2"/><path d="M 32 46 Q 17 35 19 21 Q 27 16 38 23 Q 47 31 32 46" fill="none" stroke="#f4b400" stroke-width="2"/><path d="M 32 46 L 32 26" stroke="#f4b400" stroke-width="1.5" stroke-dasharray="3,3"/></svg>
+          </div>
+          <h3>Farm Fresh</h3>
+          <p>Sourced directly from partner farms across Uttarakhand, Rajasthan, and Gujarat.</p>
+        </div>
+
+        <div class="qcard reveal">
+          <div class="qi">
+            <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="none" stroke="#f4b400" stroke-width="2"/><rect x="21" y="24" width="22" height="24" rx="3" fill="none" stroke="#f4b400" stroke-width="2"/><rect x="19" y="19" width="26" height="7" rx="2.5" fill="none" stroke="#f4b400" stroke-width="2"/><line x1="21" y1="33" x2="43" y2="33" stroke="#f4b400" stroke-width="1.5"/></svg>
+          </div>
+          <h3>Glass Packaging</h3>
+          <p>Premium borosilicate glass jars — hygienic, sustainable, and completely plastic-free.</p>
+        </div>
+
+        <div class="qcard reveal">
+          <div class="qi">
+            <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="none" stroke="#f4b400" stroke-width="2"/><path d="M 22 38 Q 18 30 22 23 Q 27 16 32 20 Q 37 16 42 23 Q 46 30 42 38 L 32 46 Z" fill="none" stroke="#f4b400" stroke-width="2" stroke-linejoin="round"/><circle cx="32" cy="27" r="4.5" fill="none" stroke="#f4b400" stroke-width="1.5"/></svg>
+          </div>
+          <h3>Traditional Methods</h3>
+          <p>Bilona ghee churning and cold honey extraction — crafted as it has been for centuries.</p>
+        </div>
+
+        <div class="qcard reveal">
+          <div class="qi">
+            <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="none" stroke="#f4b400" stroke-width="2"/><path d="M 32 14 L 35.5 24.5 L 46.5 24.5 L 37.5 31 L 40.5 42 L 32 35.5 L 23.5 42 L 26.5 31 L 17.5 24.5 L 28.5 24.5 Z" fill="none" stroke="#f4b400" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Lab Tested</h3>
+          <p>Every batch is tested by FSSAI-certified labs before it ever reaches your doorstep.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="sec-head">
+      <span class="eyebrow reveal">Pure &amp; Natural</span>
+      <h2 class="sec-title reveal">A Glimpse of MADHU</h2>
+    </div>
+    <div class="gallery-grid">
+
+      <div class="gcell gc1 reveal">
+        <div class="gcell-label">Golden Honey</div>
+        <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="280" fill="#fff8e1"/>
+          <g opacity="0.55">
+            <polygon points="300,20 332,38 332,74 300,92 268,74 268,38" fill="none" stroke="#f4b400" stroke-width="2"/>
+            <polygon points="332,74 364,92 364,128 332,146 300,128 300,92" fill="#ffa000" opacity="0.25" stroke="#f4b400" stroke-width="2"/>
+            <polygon points="268,74 300,92 300,128 268,146 236,128 236,92" fill="#ffa000" opacity="0.25" stroke="#f4b400" stroke-width="2"/>
+            <polygon points="300,128 332,146 332,182 300,200 268,182 268,146" fill="none" stroke="#f4b400" stroke-width="2"/>
+            <polygon points="364,20 396,38 396,74 364,92 332,74 332,38" fill="#ffa000" opacity="0.25" stroke="#f4b400" stroke-width="2"/>
+          </g>
+          <path d="M 96 0 Q 98 54 96 88 Q 94 115 98 140 Q 102 162 96 185" stroke="#f4b400" stroke-width="15" fill="none" stroke-linecap="round"/>
+          <ellipse cx="96" cy="202" rx="26" ry="20" fill="#f4b400"/>
+          <path d="M 168 0 Q 170 38 168 62 Q 166 82 170 100" stroke="#d08000" stroke-width="11" fill="none" stroke-linecap="round"/>
+          <ellipse cx="168" cy="116" rx="19" ry="14" fill="#d08000"/>
+          <path d="M 32 95 Q 20 108 16 135 L 10 230 Q 10 255 80 258 Q 150 255 150 230 L 144 135 Q 140 108 128 95 Z" fill="rgba(244,180,0,0.22)" stroke="rgba(244,180,0,0.6)" stroke-width="2"/>
+          <path d="M 18 148 L 142 148 L 142 230 Q 142 253 80 255 Q 18 253 18 230 Z" fill="#d08000" opacity="0.75"/>
+          <ellipse cx="80" cy="148" rx="62" ry="9" fill="#f4b400"/>
+          <rect x="36" y="72" width="88" height="26" rx="6" fill="#8d6543"/>
+        </svg>
+      </div>
+
+      <div class="gcell gc2 reveal">
+        <div class="gcell-label">Our Bee Farms</div>
+        <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="280" fill="#e8f5e9"/>
+          <ellipse cx="200" cy="272" rx="220" ry="58" fill="#2e7d32"/>
+          <circle cx="348" cy="55" r="42" fill="#fff3e0" opacity="0.9"/>
+          <circle cx="348" cy="55" r="28" fill="#ffe082" opacity="0.55"/>
+          <rect x="88" y="192" width="82" height="70" rx="5" fill="#f4b400"/>
+          <rect x="93" y="198" width="72" height="12" rx="2" fill="#d08000"/>
+          <rect x="93" y="212" width="72" height="12" rx="2" fill="#ffc107"/>
+          <rect x="93" y="226" width="72" height="12" rx="2" fill="#d08000"/>
+          <rect x="93" y="240" width="72" height="10" rx="2" fill="#ffc107"/>
+          <rect x="114" y="256" width="32" height="9" rx="3" fill="#5d4037"/>
+          <rect x="228" y="200" width="76" height="64" rx="5" fill="#ffa000"/>
+          <rect x="233" y="206" width="66" height="11" rx="2" fill="#d08000"/>
+          <rect x="233" y="219" width="66" height="11" rx="2" fill="#ffc107"/>
+          <rect x="233" y="232" width="66" height="11" rx="2" fill="#d08000"/>
+          <rect x="233" y="245" width="66" height="10" rx="2" fill="#ffc107"/>
+          <rect x="252" y="258" width="28" height="8" rx="3" fill="#5d4037"/>
+          <ellipse cx="145" cy="158" rx="10" ry="6" fill="#f4b400"/>
+          <ellipse cx="188" cy="140" rx="10" ry="6" fill="#f4b400"/>
+          <ellipse cx="232" cy="162" rx="10" ry="6" fill="#f4b400"/>
+          <ellipse cx="274" cy="148" rx="10" ry="6" fill="#f4b400"/>
+          <ellipse cx="122" cy="178" rx="10" ry="6" fill="#f4b400"/>
+          <ellipse cx="314" cy="165" rx="10" ry="6" fill="#f4b400"/>
+          <ellipse cx="200" cy="126" rx="10" ry="6" fill="#f4b400"/>
+          <rect x="32" y="194" width="16" height="96" rx="4" fill="#5d4037"/>
+          <ellipse cx="40" cy="174" rx="40" ry="50" fill="#2e7d32"/>
+          <ellipse cx="40" cy="154" rx="28" ry="35" fill="#388e3c"/>
+          <rect x="360" y="204" width="14" height="82" rx="4" fill="#5d4037"/>
+          <ellipse cx="367" cy="186" rx="34" ry="44" fill="#1b5e20"/>
+          <ellipse cx="367" cy="168" rx="24" ry="30" fill="#2e7d32"/>
+        </svg>
+      </div>
+
+      <div class="gcell gc3 reveal">
+        <div class="gcell-label">Pure Desi Ghee</div>
+        <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="280" fill="#f9fbe7"/>
+          <rect x="116" y="32" width="168" height="30" rx="8" fill="#4a7c3f"/>
+          <rect x="110" y="58" width="180" height="17" rx="7" fill="#3a6430"/>
+          <path d="M 126 75 Q 106 88 100 118 L 93 236 Q 93 270 200 273 Q 307 270 307 236 L 300 118 Q 294 88 274 75 Z" fill="rgba(255,252,230,0.18)" stroke="rgba(255,255,255,0.55)" stroke-width="2.5"/>
+          <path d="M 103 128 Q 104 116 116 112 L 284 112 Q 296 116 297 128 L 297 236 Q 297 265 200 268 Q 103 265 103 236 Z" fill="#fffde7" opacity="0.95"/>
+          <ellipse cx="200" cy="112" rx="92" ry="13" fill="#ffe57f"/>
+          <ellipse cx="176" cy="109" rx="52" ry="7" fill="#fff" opacity="0.5"/>
+          <path d="M 142 96 Q 134 150 137 204" stroke="rgba(255,255,255,0.62)" stroke-width="9" fill="none" stroke-linecap="round"/>
+          <rect x="128" y="148" width="144" height="92" rx="8" fill="#f1f8e9" opacity="0.97"/>
+          <rect x="131" y="151" width="138" height="86" rx="6" fill="none" stroke="#2e7d32" stroke-width="2"/>
+          <text x="200" y="178" text-anchor="middle" font-family="Playfair Display,serif" font-size="18" fill="#1b5e20" font-weight="900" letter-spacing="3.5">MADHU</text>
+          <text x="200" y="193" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="10" fill="#3a6430" letter-spacing="2">DESI · GHEE</text>
+          <line x1="142" y1="198" x2="258" y2="198" stroke="#2e7d32" stroke-width="1.4"/>
+          <text x="200" y="214" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="9" fill="#4a7c3f">Bilona Method · A2 Milk</text>
+          <ellipse cx="200" cy="267" rx="95" ry="11" fill="#c6a000" opacity="0.4"/>
+          <path d="M 324 196 Q 344 170 358 158 Q 370 146 378 158 Q 386 172 370 182 Q 360 190 350 208 Z" fill="#fff9c4" opacity="0.7"/>
+        </svg>
+      </div>
+
+      <div class="gcell gc4 reveal">
+        <div class="gcell-label">Village Farm Life</div>
+        <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="280" fill="#fff3e0"/>
+          <ellipse cx="200" cy="276" rx="230" ry="72" fill="#2e7d32"/>
+          <polygon points="0,178 92,96 184,178" fill="#a5d6a7" opacity="0.65"/>
+          <polygon points="58,178 154,84 250,178" fill="#81c784" opacity="0.5"/>
+          <polygon points="280,178 372,98 464,178" fill="#c8e6c9" opacity="0.65"/>
+          <rect x="248" y="162" width="122" height="108" rx="3" fill="#bcaaa4"/>
+          <polygon points="248,162 309,105 370,162" fill="#7b5c42"/>
+          <rect x="278" y="198" width="36" height="54" rx="4" fill="#5d4037"/>
+          <rect x="258" y="173" width="34" height="28" rx="3" fill="#fff9e1"/>
+          <rect x="326" y="173" width="34" height="28" rx="3" fill="#fff9e1"/>
+          <ellipse cx="122" cy="248" rx="58" ry="32" fill="#1a0a05" opacity="0.88"/>
+          <ellipse cx="76" cy="238" rx="30" ry="24" fill="#1a0a05" opacity="0.88"/>
+          <circle cx="58" cy="234" r="9" fill="#1a0a05" opacity="0.88"/>
+          <rect x="26" y="252" width="14" height="46" rx="2" fill="#8d6e63"/>
+          <rect x="70" y="252" width="14" height="46" rx="2" fill="#8d6e63"/>
+          <rect x="26" y="265" width="58" height="9" rx="2" fill="#8d6e63"/>
+          <rect x="26" y="280" width="58" height="8" rx="2" fill="#8d6e63"/>
+          <rect x="188" y="220" width="13" height="58" rx="3" fill="#5d4037"/>
+          <ellipse cx="194" cy="202" rx="32" ry="40" fill="#2e7d32"/>
+          <ellipse cx="194" cy="184" rx="22" ry="28" fill="#388e3c"/>
+          <circle cx="352" cy="58" r="38" fill="#ffcc02" opacity="0.25"/>
+          <circle cx="352" cy="58" r="24" fill="#ffcc02" opacity="0.36"/>
+        </svg>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-wrap">
+      <div class="contact-left reveal-left">
+        <span class="eyebrow">Get In Touch</span>
+        <h2 class="contact-h2">Connect<br>With MADHU</h2>
+        <p>Questions about our products? Want to place a bulk order? We'd love to hear from you.</p>
+        <div class="clist">
+          <div class="citem">
+            <span class="cicon"><i class="fas fa-map-marker-alt"></i></span>
+            <div><strong>Our Farm</strong><br><span>Village Panchkula, Uttarakhand, India</span></div>
+          </div>
+          <div class="citem">
+            <span class="cicon"><i class="fas fa-phone-alt"></i></span>
+            <div><strong>Call Us</strong><br><span>+91 98765 43210</span></div>
+          </div>
+          <div class="citem">
+            <span class="cicon"><i class="fas fa-envelope"></i></span>
+            <div><strong>Email</strong><br><span>hello@madhuorganic.in</span></div>
+          </div>
+          <div class="citem">
+            <span class="cicon"><i class="fas fa-clock"></i></span>
+            <div><strong>Hours</strong><br><span>Mon–Sat · 9 AM – 6 PM IST</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-right reveal-right">
+        <form id="contactForm">
+          <div class="frow two">
+            <div class="field"><input type="text" placeholder="Your Name" required/></div>
+            <div class="field"><input type="email" placeholder="Email Address" required/></div>
+          </div>
+          <div class="field"><input type="text" placeholder="Subject"/></div>
+          <div class="field"><textarea rows="5" placeholder="Your Message" required></textarea></div>
+          <button type="submit" class="btn-submit">Send Message <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="flogo">MADHU</div>
+        <div class="ftagline">Nature's Pure Gold</div>
+        <p>Bringing you the finest honey and ghee from the heart of India's farms — pure, natural, full of tradition.</p>
+        <div class="socials">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#">Raw Honey 250g</a></li>
+          <li><a href="#">Raw Honey 500g</a></li>
+          <li><a href="#">Desi Ghee 250ml</a></li>
+          <li><a href="#">Desi Ghee 500ml</a></li>
+          <li><a href="#">Gift Sets</a></li>
+          <li><a href="#">Festive Hampers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Quality Promise</a></li>
+          <li><a href="#">Blog &amp; Recipes</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-nl">
+        <h4>Stay Connected</h4>
+        <p>Get updates on new harvests, seasonal products, and exclusive offers.</p>
+        <div class="nlrow">
+          <input type="email" placeholder="Your email address" class="nlinput"/>
+          <button class="nlbtn">Subscribe</button>
+        </div>
+        <div class="fcerts">
+          <span>✓ FSSAI Certified</span>
+          <span>✓ Organic India</span>
+          <span>✓ ISO 9001</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <p>© 2024 MADHU Organic. All rights reserved. Crafted with <span style="color:#f4b400">♥</span> in India.</p>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Refund Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart sidebar -->
+  <div id="cartSidebar" class="cart-sidebar">
+    <div class="cart-head"><h3>Your Cart</h3><button onclick="closeCart()"><i class="fas fa-times"></i></button></div>
+    <div id="cartList"><p class="cart-empty">Your cart is empty</p></div>
+    <div id="cartFoot" style="display:none">
+      <div class="cart-total">Total: <strong id="cartTotal">₹0</strong></div>
+      <button class="btn-checkout">Proceed to Checkout</button>
+    </div>
+  </div>
+  <div id="cartOverlay" class="cart-overlay" onclick="closeCart()"></div>
+
+  <!-- Toast notification -->
+  <div id="toast" class="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg"></span></div>
+
+</div><!-- /site -->
+
+<script src="script.js"></script>
+</body>
+</html>
